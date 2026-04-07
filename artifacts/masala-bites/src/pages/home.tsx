@@ -698,7 +698,7 @@ function FAQ() {
     },
     {
       q: "Do you provide staff and service at the event?",
-      a: "Yes. Our full-service catering includes on-site staff who handle setup, service, and cleanup so you don't have to manage anything on the day.",
+      a: "No. We deliver and set up the food, but on-site staffing is not included. Please reach out if you have questions about what's included in your package.",
     },
   ];
 
