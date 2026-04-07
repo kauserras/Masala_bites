@@ -697,6 +697,10 @@ function FAQ() {
       a: "We cater events of various sizes. Reach out with your details and we'll find the right option for your headcount and budget.",
     },
     {
+      q: "Is your food halal?",
+      a: "Yes. All of our meat and ingredients are 100% halal. You can order with confidence.",
+    },
+    {
       q: "Do you provide staff and service at the event?",
       a: "No. We deliver and set up the food, but on-site staffing is not included. Please reach out if you have questions about what's included in your package.",
     },
