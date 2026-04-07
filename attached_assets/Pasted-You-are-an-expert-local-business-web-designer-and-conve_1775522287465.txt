@@ -1,0 +1,130 @@
+You are an expert local business web designer and conversion-focused landing page specialist.
+
+Create a polished, realistic, client-ready one-page website for this local business using the exact information provided below.
+
+This website must feel custom-made for this business and good enough to show directly to the business owner as a demo.
+
+The design should be modern, clean, mobile-friendly, visually strong, and focused on getting real actions such as phone calls, WhatsApp messages, bookings, quote requests, or visits.
+
+BUSINESS DETAILS
+Business Name: Masala Bites
+Business Type: Restaurant
+Tagline: From Our Kitchen to Your Grand Celebration,Turning Events into Flavorful Experiences
+City / Area: Nashville
+Full Address: 2195 Nolensville Pike Nashville, TN 37211
+Phone Number: 6152937885
+WhatsApp Number: {{WHATSAPP_NUMBER}}
+Email Address: {{EMAIL_ADDRESS}}
+Google Maps Link: https://www.google.com/maps/dir/36.1180797,-86.9305921/2195+Nolensville+Pk,+Nashville,+TN+37211/@36.1511315,-86.9946803,11z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x886465e49afdbc41:0xb8ca1fdf061c0d0b!2m2!1d-86.7536581!2d36.1267474?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D
+Main Services: Catering
+Secondary Services: {{SECONDARY_SERVICES}}
+Opening Hours: {{OPENING_HOURS}}
+Business Description: {{BUSINESS_DESCRIPTION}}
+Unique Selling Points: {{UNIQUE_SELLING_POINTS}}
+Testimonials / Reviews: {{TESTIMONIALS}}
+Main CTA: Call Now
+Secondary CTA: {{SECONDARY_CTA}}
+Brand Style: Luxury
+Primary Color: Gold
+Secondary Color: {{SECONDARY_COLOR}}
+
+PRIMARY GOAL
+Make this business look trustworthy, professional, locally relevant, and easy to contact.
+
+CORE RULES
+- Use only the information provided.
+- Do not invent fake reviews, fake ratings, fake awards, fake years of experience, fake history, fake team members, fake statistics, or unsupported claims.
+- If some information is missing, simplify gracefully instead of making things up.
+- Keep the copy concise, natural, specific, and believable.
+- Do not create a generic AI-looking website.
+- Do not use filler content.
+- Do not bloat the page with unnecessary sections.
+- Prioritize clarity, trust, and conversion.
+
+DESIGN DIRECTION
+- Create a clean, premium, high-conversion layout.
+- Make the hero section strong and immediately useful.
+- Use clean spacing, clear hierarchy, and easy-to-scan sections.
+- Keep the website visually polished but realistic.
+- Match the style to the business type and brand style.
+- Prioritize mobile-first design.
+- Avoid startup-style jargon unless it genuinely fits the business.
+- Avoid clutter, overdesign, and flashy effects.
+
+COPY DIRECTION
+- Write like a real business website, not a marketing template.
+- Keep headlines clear and direct.
+- Keep body copy short.
+- Make every sentence relevant to this exact business.
+- Sound professional, trustworthy, and local.
+- Avoid hype and vague generic statements.
+
+BUILD THIS PAGE STRUCTURE
+
+1. HERO
+- Business name
+- Clear, business-specific headline
+- Short supporting copy
+- Primary CTA
+- Secondary CTA
+- Local trust signal if available
+
+2. SERVICES
+- Show the main services clearly
+- Use short, scannable descriptions
+- Keep this section clean and useful
+
+3. ABOUT
+- Short introduction to the business
+- Explain what it offers and why a local customer may choose it
+
+4. TRUST / WHY CHOOSE US
+- Use practical trust points based only on the provided information
+- Keep it believable and useful
+
+5. SOCIAL PROOF OR CREDIBILITY
+- Use testimonials only if provided
+- If no testimonials are provided, replace this with a simple credibility / reassurance section
+- Never invent reviews
+
+6. LOCATION / SERVICE AREA
+- Mention city, area, address, or service coverage if available
+- Reinforce local relevance
+
+7. CONTACT / ACTION
+- Make contacting the business feel immediate and easy
+- Include phone number
+- Include WhatsApp
+- Include email if available
+- Include address if available
+- Include strong CTA wording
+
+8. OPTIONAL FAQ
+- Include only if it truly helps this business type
+- Keep it short
+
+9. FOOTER
+- Clean footer
+- Business name
+- Available contact details
+- Address or city if available
+
+FUNCTIONAL REQUIREMENTS
+- Add a clickable Call action using the phone number.
+- Add a clickable WhatsApp action using the WhatsApp number.
+- Add a directions/location action if address or map data is available.
+- Make the main CTA visible in the hero.
+- Repeat key contact actions again in the contact section.
+- Ensure the page is responsive and works well on mobile.
+
+OUTPUT STANDARD
+The final result must feel:
+- custom-made
+- realistic
+- visually polished
+- locally relevant
+- easy to present as a demo
+- focused on real business conversion
+
+FINAL INSTRUCTION
+Generate the strongest possible version of this website for this exact local business with a focus on realism, trust, strong CTA placement, clean design, and client-ready presentation.

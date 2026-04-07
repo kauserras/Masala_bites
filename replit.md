@@ -16,6 +16,14 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### Masala Bites (react-vite) — `/`
+A luxury single-page catering website for Masala Bites, a Nashville-based catering restaurant. Dark gold luxury theme with Playfair Display serif fonts.
+- **Sections**: Hero, Services, About, Why Us, Credibility, Location (Google Maps), FAQ, Contact, Footer
+- **Features**: Clickable phone/directions CTAs, scroll reveal animations, mobile-responsive navbar, FAQ accordion
+- **Location**: `artifacts/masala-bites/`
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages
