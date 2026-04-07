@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Phone, MapPin, ChevronDown, ChevronUp, Star, Clock, Utensils, PartyPopper, Check, Menu, X } from "lucide-react";
 
+import heroBg from "@assets/IMG_9839_1775522756253.jpeg";
+import teamImg from "@assets/IMG_9957_1775522756253.jpeg";
+import meatImg from "@assets/IMG_9950_1775522756252.jpeg";
+import biryaniBig from "@assets/IMG_9847_1775522756253.jpeg";
+import curryImg from "@assets/IMG_9782_1775522756253.jpeg";
+
 const PHONE = "6152937885";
 const PHONE_DISPLAY = "(615) 293-7885";
 const GOOGLE_MAPS = "https://www.google.com/maps/dir/36.1180797,-86.9305921/2195+Nolensville+Pk,+Nashville,+TN+37211/@36.1511315,-86.9946803,11z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x886465e49afdbc41:0xb8ca1fdf061c0d0b!2m2!1d-86.7536581!2d36.1267474?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D";
@@ -20,7 +26,7 @@ function useScrollReveal() {
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -61,7 +67,7 @@ function NavBar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -78,11 +84,9 @@ function NavBar() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? "rgba(18,13,9,0.95)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(200,146,42,0.2)" : "none",
+        background: scrolled ? "rgba(14,10,6,0.96)" : "transparent",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(200,146,42,0.18)" : "none",
       }}
     >
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
@@ -128,7 +132,7 @@ function NavBar() {
       {open && (
         <div
           className="md:hidden px-5 pb-5 flex flex-col gap-4"
-          style={{ background: "rgba(18,13,9,0.98)" }}
+          style={{ background: "rgba(14,10,6,0.98)" }}
         >
           {navLinks.map((l) => (
             <a
@@ -159,25 +163,32 @@ function NavBar() {
 function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 pt-20"
-      style={{
-        background: `
-          radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200,146,42,0.18) 0%, transparent 60%),
-          linear-gradient(180deg, hsl(30 15% 5%) 0%, hsl(30 15% 8%) 100%)
-        `,
-      }}
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 pt-20 overflow-hidden"
     >
+      {/* Real kitchen photo as background */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      {/* Rich dark overlay to keep text legible */}
+      <div
+        className="absolute inset-0"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8922a' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          background: "linear-gradient(180deg, rgba(10,7,4,0.82) 0%, rgba(10,7,4,0.72) 40%, rgba(10,7,4,0.88) 100%)",
+        }}
+      />
+      {/* Subtle gold glow at top */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 70% 40% at 50% 10%, rgba(200,146,42,0.1) 0%, transparent 60%)",
         }}
       />
 
       <div className="relative z-10 max-w-4xl mx-auto">
         <div
           className="inline-block text-xs font-semibold tracking-widest uppercase mb-6 px-4 py-1.5 rounded-full"
-          style={{ background: "rgba(200,146,42,0.12)", color: "#e8b84b", border: "1px solid rgba(200,146,42,0.3)" }}
+          style={{ background: "rgba(200,146,42,0.15)", color: "#e8b84b", border: "1px solid rgba(200,146,42,0.35)" }}
         >
           Nashville's Premier Catering Service
         </div>
@@ -185,8 +196,9 @@ function Hero() {
         <h1
           className="font-serif font-bold leading-tight mb-5"
           style={{
-            fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+            fontSize: "clamp(2.4rem, 6vw, 4.5rem)",
             color: "#f0e0b0",
+            textShadow: "0 2px 20px rgba(0,0,0,0.7)",
           }}
           data-testid="hero-heading"
         >
@@ -198,14 +210,14 @@ function Hero() {
 
         <p
           className="text-lg mb-2 max-w-2xl mx-auto leading-relaxed"
-          style={{ color: "rgba(220,195,150,0.8)" }}
+          style={{ color: "rgba(230,210,170,0.9)", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
         >
           Turning Events into Flavorful Experiences
         </p>
 
         <p
           className="text-base mb-10 max-w-xl mx-auto"
-          style={{ color: "rgba(180,155,115,0.75)" }}
+          style={{ color: "rgba(200,175,135,0.8)", textShadow: "0 1px 6px rgba(0,0,0,0.5)" }}
         >
           Full-service catering for weddings, corporate events, and celebrations throughout the Nashville area.
         </p>
@@ -214,8 +226,8 @@ function Hero() {
           <a
             href={`tel:${PHONE}`}
             data-testid="hero-call-button"
-            className="flex items-center gap-2.5 px-7 py-3.5 rounded text-base font-bold transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95"
-            style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", color: "#1a0e06", minWidth: "180px", justifyContent: "center" }}
+            className="flex items-center gap-2.5 px-8 py-3.5 rounded text-base font-bold transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95"
+            style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", color: "#1a0e06", minWidth: "185px", justifyContent: "center", boxShadow: "0 4px 20px rgba(200,146,42,0.35)" }}
           >
             <Phone size={18} />
             Call Now
@@ -225,12 +237,13 @@ function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             data-testid="hero-directions-button"
-            className="flex items-center gap-2.5 px-7 py-3.5 rounded text-base font-semibold transition-all duration-200 hover:opacity-90"
+            className="flex items-center gap-2.5 px-8 py-3.5 rounded text-base font-semibold transition-all duration-200 hover:opacity-90"
             style={{
-              background: "transparent",
+              background: "rgba(255,255,255,0.07)",
+              backdropFilter: "blur(8px)",
               color: "#e8b84b",
               border: "1.5px solid rgba(200,146,42,0.5)",
-              minWidth: "180px",
+              minWidth: "185px",
               justifyContent: "center",
             }}
           >
@@ -241,7 +254,7 @@ function Hero() {
 
         <div
           className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full"
-          style={{ background: "rgba(200,146,42,0.08)", color: "rgba(220,195,150,0.7)", border: "1px solid rgba(200,146,42,0.18)" }}
+          style={{ background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", color: "rgba(220,195,150,0.75)", border: "1px solid rgba(200,146,42,0.2)" }}
         >
           <MapPin size={14} style={{ color: "#e8b84b" }} />
           <span>Nashville, TN &bull; Serving the Greater Nashville Area</span>
@@ -252,7 +265,7 @@ function Hero() {
         <a
           href="#services"
           className="flex flex-col items-center gap-1 text-xs"
-          style={{ color: "rgba(200,146,42,0.5)" }}
+          style={{ color: "rgba(200,146,42,0.6)" }}
         >
           <span className="tracking-wider uppercase">Explore</span>
           <ChevronDown size={18} className="animate-bounce" />
@@ -262,27 +275,54 @@ function Hero() {
   );
 }
 
+function PhotoStrip() {
+  const photos = [
+    { src: meatImg, alt: "Masala meat dish prepared for catering" },
+    { src: biryaniBig, alt: "Fragrant biryani rice close-up" },
+    { src: curryImg, alt: "Chicken curry in catering trays" },
+  ];
+
+  return (
+    <div className="grid grid-cols-3 gap-0.5 overflow-hidden" style={{ height: "220px" }}>
+      {photos.map((p, i) => (
+        <div
+          key={i}
+          className="overflow-hidden relative"
+          data-testid={`gallery-photo-${i}`}
+        >
+          <img
+            src={p.src}
+            alt={p.alt}
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0" style={{ background: "rgba(10,7,4,0.18)" }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Services() {
   const services = [
     {
-      icon: <PartyPopper size={28} style={{ color: "#e8b84b" }} />,
+      icon: <PartyPopper size={26} style={{ color: "#e8b84b" }} />,
       title: "Wedding Catering",
-      description: "From intimate ceremonies to grand receptions — rich, aromatic menus that make your wedding day unforgettable. Custom packages tailored to your guest count and vision.",
+      description: "From intimate ceremonies to grand receptions — rich, aromatic menus that make your wedding day unforgettable. Custom packages tailored to your guest count.",
     },
     {
-      icon: <Utensils size={28} style={{ color: "#e8b84b" }} />,
+      icon: <Utensils size={26} style={{ color: "#e8b84b" }} />,
       title: "Corporate Events",
-      description: "Professional catering for conferences, team lunches, client dinners, and company celebrations. Hot, fresh meals delivered and served on schedule.",
+      description: "Professional catering for conferences, team lunches, client dinners, and company celebrations. Hot, fresh meals delivered on schedule.",
     },
     {
-      icon: <Star size={28} style={{ color: "#e8b84b" }} />,
+      icon: <Star size={26} style={{ color: "#e8b84b" }} />,
       title: "Private Celebrations",
       description: "Birthdays, anniversaries, graduations, and family gatherings. A full spread of authentic flavors that bring people together.",
     },
     {
-      icon: <Clock size={28} style={{ color: "#e8b84b" }} />,
+      icon: <Clock size={26} style={{ color: "#e8b84b" }} />,
       title: "Custom Menus",
-      description: "Every event has its own taste. Work with our team to build a menu that fits your occasion, dietary needs, and budget — no one-size-fits-all packages.",
+      description: "Work with our team to build a menu that fits your occasion, dietary needs, and budget — no one-size-fits-all packages.",
     },
   ];
 
@@ -302,7 +342,7 @@ function Services() {
           </p>
         </RevealSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s, i) => (
             <RevealSection key={s.title} delay={i * 100}>
               <div
@@ -314,7 +354,7 @@ function Services() {
                 data-testid={`service-card-${i}`}
               >
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                  className="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
                   style={{ background: "rgba(200,146,42,0.1)" }}
                 >
                   {s.icon}
@@ -368,40 +408,18 @@ function About() {
           </RevealSection>
 
           <RevealSection delay={150}>
+            {/* Real team photo */}
             <div
               className="rounded-xl overflow-hidden"
-              style={{ border: "1px solid rgba(200,146,42,0.2)" }}
+              style={{ border: "1.5px solid rgba(200,146,42,0.22)", boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}
             >
-              <div
-                className="w-full flex items-center justify-center"
-                style={{
-                  height: "360px",
-                  background: "linear-gradient(135deg, hsl(30 12% 11%) 0%, hsl(30 10% 13%) 100%)",
-                }}
-              >
-                <div className="text-center p-8">
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5"
-                    style={{ background: "rgba(200,146,42,0.15)", border: "2px solid rgba(200,146,42,0.3)" }}
-                  >
-                    <Utensils size={36} style={{ color: "#e8b84b" }} />
-                  </div>
-                  <p className="font-serif text-2xl font-semibold mb-2" style={{ color: "#f0e0b0" }}>
-                    Full-Service Catering
-                  </p>
-                  <p className="text-sm" style={{ color: "rgba(180,155,115,0.7)" }}>
-                    Nashville, Tennessee
-                  </p>
-                  <div className="mt-6 pt-6" style={{ borderTop: "1px solid rgba(200,146,42,0.15)" }}>
-                    <p className="text-xs tracking-wider uppercase mb-1" style={{ color: "rgba(200,146,42,0.6)" }}>
-                      Serving
-                    </p>
-                    <p className="text-sm font-medium" style={{ color: "rgba(200,175,130,0.8)" }}>
-                      Greater Nashville Area
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <img
+                src={teamImg}
+                alt="Masala Bites team preparing catering"
+                className="w-full h-full object-cover"
+                style={{ height: "380px", objectPosition: "center" }}
+                data-testid="about-team-photo"
+              />
             </div>
           </RevealSection>
         </div>
@@ -433,7 +451,7 @@ function WhyUs() {
           <GoldDivider />
         </RevealSection>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-4">
           {points.map((point, i) => (
             <RevealSection key={i} delay={i * 80}>
               <div
@@ -462,9 +480,36 @@ function WhyUs() {
   );
 }
 
+function FoodShowcase() {
+  return (
+    <section className="py-0 overflow-hidden" style={{ background: "hsl(30 14% 7%)" }}>
+      <RevealSection>
+        <div className="max-w-6xl mx-auto px-5 pt-14 pb-8 text-center">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: "#e8b84b" }}>
+            From Our Kitchen
+          </p>
+          <h2 className="font-serif text-2xl md:text-3xl font-semibold" style={{ color: "#f0e0b0" }}>
+            Made Fresh for Every Event
+          </h2>
+        </div>
+      </RevealSection>
+      <RevealSection delay={100}>
+        <PhotoStrip />
+      </RevealSection>
+      <RevealSection delay={150}>
+        <div className="text-center py-8">
+          <p className="text-sm" style={{ color: "rgba(180,155,115,0.7)" }}>
+            Every dish prepared fresh — no shortcuts, no shortcuts.
+          </p>
+        </div>
+      </RevealSection>
+    </section>
+  );
+}
+
 function Credibility() {
   return (
-    <section className="py-16 px-5" style={{ background: "hsl(30 14% 7%)" }}>
+    <section className="py-16 px-5" style={{ background: "hsl(30 15% 8%)" }}>
       <div className="max-w-5xl mx-auto">
         <RevealSection className="text-center mb-10">
           <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
@@ -489,7 +534,7 @@ function Credibility() {
             },
             {
               label: "Made Fresh",
-              desc: "Every dish is prepared fresh for your event. No pre-packaged shortcuts — real food, real ingredients, real flavor.",
+              desc: "Every dish is prepared fresh for your event. Real food, real ingredients, real flavor — every time.",
               icon: <Utensils size={22} style={{ color: "#e8b84b" }} />,
             },
           ].map((item, i) => (
@@ -525,7 +570,7 @@ function Credibility() {
 
 function Location() {
   return (
-    <section id="location" className="py-20 px-5" style={{ background: "hsl(30 15% 8%)" }}>
+    <section id="location" className="py-20 px-5" style={{ background: "hsl(30 14% 7%)" }}>
       <div className="max-w-5xl mx-auto">
         <RevealSection className="text-center mb-12">
           <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
@@ -611,11 +656,11 @@ function Location() {
           <RevealSection delay={120}>
             <div
               className="rounded-xl overflow-hidden"
-              style={{ border: "1px solid rgba(200,146,42,0.15)", height: "280px", background: "hsl(30 12% 11%)" }}
+              style={{ border: "1px solid rgba(200,146,42,0.15)", height: "280px" }}
             >
               <iframe
                 title="Masala Bites Location"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=2195+Nolensville+Pike,Nashville,TN+37211"
+                src="https://maps.google.com/maps?q=2195+Nolensville+Pike+Nashville+TN+37211&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(1.5)" }}
@@ -637,7 +682,7 @@ function FAQ() {
   const faqs = [
     {
       q: "How far in advance should I book?",
-      a: "We recommend reaching out at least 2-4 weeks before your event, and earlier for large events like weddings. For last-minute requests, contact us and we'll do our best to accommodate.",
+      a: "We recommend reaching out at least 2–4 weeks before your event, and earlier for large events like weddings. For last-minute requests, contact us and we'll do our best to accommodate.",
     },
     {
       q: "Do you accommodate dietary restrictions?",
@@ -658,7 +703,7 @@ function FAQ() {
   ];
 
   return (
-    <section className="py-20 px-5" style={{ background: "hsl(30 14% 7%)" }}>
+    <section className="py-20 px-5" style={{ background: "hsl(30 15% 8%)" }}>
       <div className="max-w-3xl mx-auto">
         <RevealSection className="text-center mb-12">
           <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
@@ -710,8 +755,21 @@ function FAQ() {
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 px-5" style={{ background: "hsl(30 15% 8%)" }}>
-      <div className="max-w-4xl mx-auto text-center">
+    <section
+      id="contact"
+      className="relative py-24 px-5 overflow-hidden"
+    >
+      {/* Curry image as moody background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${curryImg})` }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(10,7,4,0.88)" }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <RevealSection>
           <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
             Get In Touch
@@ -720,23 +778,24 @@ function Contact() {
             Ready to Book Your Event?
           </h2>
           <GoldDivider />
-          <p className="text-base mt-6 mb-10 max-w-xl mx-auto" style={{ color: "rgba(180,155,115,0.8)" }}>
+          <p className="text-base mt-6 mb-10 max-w-xl mx-auto" style={{ color: "rgba(180,155,115,0.85)" }}>
             Call us directly to discuss your event, get a quote, or ask any questions. We respond fast and keep the process simple.
           </p>
         </RevealSection>
 
         <RevealSection delay={100}>
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto mb-10">
+          <div className="grid sm:grid-cols-2 gap-5 max-w-lg mx-auto mb-10">
             <a
               href={`tel:${PHONE}`}
               data-testid="contact-call-button"
-              className="flex flex-col items-center justify-center gap-2 py-6 px-6 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-105"
+              className="flex flex-col items-center justify-center gap-2 py-7 px-6 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{
                 background: "linear-gradient(135deg,#c8922a,#e8b84b)",
                 color: "#1a0e06",
+                boxShadow: "0 4px 24px rgba(200,146,42,0.35)",
               }}
             >
-              <Phone size={24} />
+              <Phone size={26} />
               <span className="font-bold text-base">Call Now</span>
               <span className="text-sm font-medium opacity-80">{PHONE_DISPLAY}</span>
             </a>
@@ -746,14 +805,15 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="contact-directions-button"
-              className="flex flex-col items-center justify-center gap-2 py-6 px-6 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-105"
+              className="flex flex-col items-center justify-center gap-2 py-7 px-6 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{
-                background: "hsl(30 12% 11%)",
-                border: "1.5px solid rgba(200,146,42,0.35)",
+                background: "rgba(10,7,4,0.7)",
+                backdropFilter: "blur(8px)",
+                border: "1.5px solid rgba(200,146,42,0.4)",
                 color: "#e8b84b",
               }}
             >
-              <MapPin size={24} />
+              <MapPin size={26} />
               <span className="font-bold text-base">Get Directions</span>
               <span className="text-sm font-medium opacity-70">Nashville, TN</span>
             </a>
@@ -763,7 +823,7 @@ function Contact() {
         <RevealSection delay={150}>
           <div
             className="inline-flex items-center gap-3 px-5 py-3 rounded-full"
-            style={{ background: "rgba(200,146,42,0.08)", border: "1px solid rgba(200,146,42,0.2)" }}
+            style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(200,146,42,0.22)" }}
           >
             <MapPin size={15} style={{ color: "#e8b84b" }} />
             <span className="text-sm" style={{ color: "rgba(200,175,130,0.8)" }}>
@@ -840,6 +900,7 @@ export default function Home() {
       <Services />
       <About />
       <WhyUs />
+      <FoodShowcase />
       <Credibility />
       <Location />
       <FAQ />
