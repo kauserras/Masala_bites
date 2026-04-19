@@ -399,7 +399,7 @@ function Menu() {
       items: [
         { name: "Chicken Manchurian", price: "$130" },
         { name: "Chicken Mughlai", price: "$120" },
-        { name: "Beef Nihari", price: "$150" },
+        { name: "Nihari", price: "$150" },
         { name: "Matar Pulao", price: "$50" },
       ],
     },
