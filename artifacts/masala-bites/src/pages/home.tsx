@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Phone, MapPin, ChevronDown, ChevronUp, Star, Clock, Utensils, PartyPopper, Check, Menu, X } from "lucide-react";
+import { Phone, MapPin, ChevronDown, ChevronUp, Star, Clock, Utensils, PartyPopper, Check, Menu as MenuIcon, X } from "lucide-react";
 
 import heroBg from "@assets/IMG_9839_1775522756253.jpeg";
 import teamImg from "@assets/IMG_9957_1775522756253.jpeg";
@@ -74,6 +74,7 @@ function NavBar() {
 
   const navLinks = [
     { label: "Services", href: "#services" },
+    { label: "Menu", href: "#menu" },
     { label: "About", href: "#about" },
     { label: "Why Us", href: "#why" },
     { label: "Location", href: "#location" },
@@ -125,7 +126,7 @@ function NavBar() {
           data-testid="nav-mobile-toggle"
           aria-label="Toggle menu"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={22} /> : <MenuIcon size={22} />}
         </button>
       </div>
 
@@ -369,6 +370,136 @@ function Services() {
             </RevealSection>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Menu() {
+  const categories = [
+    {
+      emoji: "🍛",
+      title: "Biryani",
+      items: [
+        { name: "Chicken Biryani", price: "$100" },
+        { name: "Beef Biryani", price: "$110" },
+        { name: "Goat Biryani", price: "$150" },
+      ],
+    },
+    {
+      emoji: "🍛",
+      title: "Korma",
+      items: [
+        { name: "Chicken Korma", price: "$100" },
+        { name: "Beef Korma", price: "$130" },
+        { name: "Goat Korma", price: "$160" },
+      ],
+    },
+    {
+      emoji: "🍲",
+      title: "Special Dishes",
+      items: [
+        { name: "Chicken Manchurian", price: "$130" },
+        { name: "Chicken Mughlai", price: "$120" },
+        { name: "Beef Stew (Indian Style)", price: "$140" },
+        { name: "Beef Nihari", price: "$150" },
+        { name: "Matar Pulao", price: "$50" },
+      ],
+    },
+    {
+      emoji: "🥟",
+      title: "Snacks",
+      subtitle: "Per piece",
+      items: [
+        { name: "Veggie Puffs", price: "$1 each" },
+        { name: "Chapli Kebab", price: "$3 each" },
+      ],
+    },
+  ];
+
+  return (
+    <section id="menu" className="py-20 px-5" style={{ background: "hsl(30 14% 7%)" }}>
+      <div className="max-w-5xl mx-auto">
+        <RevealSection className="text-center mb-14">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
+            Catering Menu
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4" style={{ color: "#f0e0b0" }}>
+            Our Menu
+          </h2>
+          <GoldDivider />
+          <p className="text-sm mt-4 max-w-lg mx-auto" style={{ color: "rgba(180,155,115,0.8)" }}>
+            Prices are per full tray. All meat is 100% halal.
+          </p>
+        </RevealSection>
+
+        <div className="grid sm:grid-cols-2 gap-6 mb-8">
+          {categories.map((cat, i) => (
+            <RevealSection key={cat.title} delay={i * 80}>
+              <div
+                className="rounded-xl p-6 h-full"
+                style={{
+                  background: "hsl(30 12% 11%)",
+                  border: "1px solid rgba(200,146,42,0.15)",
+                }}
+                data-testid={`menu-category-${i}`}
+              >
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-xl">{cat.emoji}</span>
+                  <div>
+                    <h3 className="font-serif text-lg font-semibold" style={{ color: "#f0e0b0" }}>
+                      {cat.title}
+                    </h3>
+                    {cat.subtitle && (
+                      <p className="text-xs" style={{ color: "rgba(200,146,42,0.6)" }}>
+                        {cat.subtitle}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {cat.items.map((item) => (
+                    <div
+                      key={item.name}
+                      className="flex items-center justify-between py-2.5 px-3 rounded-lg"
+                      style={{ background: "rgba(200,146,42,0.05)", borderLeft: "2px solid rgba(200,146,42,0.25)" }}
+                    >
+                      <span className="text-sm" style={{ color: "rgba(220,195,155,0.9)" }}>
+                        {item.name}
+                      </span>
+                      <span className="text-sm font-semibold" style={{ color: "#e8b84b" }}>
+                        {item.price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </RevealSection>
+          ))}
+        </div>
+
+        <RevealSection delay={200}>
+          <div
+            className="rounded-xl p-6 text-center"
+            style={{
+              background: "rgba(200,146,42,0.07)",
+              border: "1px solid rgba(200,146,42,0.25)",
+            }}
+          >
+            <p className="text-sm mb-3" style={{ color: "rgba(220,195,155,0.85)" }}>
+              Menu items are not limited to these — if you have something specific in mind, we're happy to accommodate.
+            </p>
+            <a
+              href={`tel:${PHONE}`}
+              data-testid="menu-call-button"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded text-sm font-bold transition-all hover:opacity-90"
+              style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", color: "#1a0e06" }}
+            >
+              <Phone size={15} />
+              Contact Us for Custom Requests
+            </a>
+          </div>
+        </RevealSection>
       </div>
     </section>
   );
@@ -902,6 +1033,7 @@ export default function Home() {
       <NavBar />
       <Hero />
       <Services />
+      <Menu />
       <About />
       <WhyUs />
       <FoodShowcase />
