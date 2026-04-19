@@ -219,7 +219,7 @@ function Hero() {
           className="text-base mb-10 max-w-xl mx-auto"
           style={{ color: "rgba(200,175,135,0.8)", textShadow: "0 1px 6px rgba(0,0,0,0.5)" }}
         >
-          Full-service catering for weddings, corporate events, and celebrations throughout the Nashville area.
+          Catering for weddings, corporate events, and celebrations throughout the Nashville area.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -338,7 +338,7 @@ function Services() {
           </h2>
           <GoldDivider />
           <p className="text-base max-w-xl mx-auto mt-4" style={{ color: "rgba(180,155,115,0.8)" }}>
-            We specialize in full-service catering that covers everything — from setup to service — so you can focus on your guests.
+            We prepare and deliver food for events of all sizes — so you can focus on your guests.
           </p>
         </RevealSection>
 
@@ -430,7 +430,7 @@ function About() {
 
 function WhyUs() {
   const points = [
-    "Full-service catering — we handle setup, service, and cleanup",
+    "We handle food preparation and delivery — so you can focus on your guests",
     "Custom menus built around your event, guests, and preferences",
     "Experienced team that works quietly in the background so you can enjoy the moment",
     "On-time, professional service for events of all sizes",
@@ -853,7 +853,7 @@ function Footer() {
               Masala Bites
             </p>
             <p className="text-sm" style={{ color: "rgba(180,155,115,0.7)" }}>
-              Full-Service Catering &bull; Nashville, TN
+              Catering &bull; Nashville, TN
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
