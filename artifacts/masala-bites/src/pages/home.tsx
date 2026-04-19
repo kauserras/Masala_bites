@@ -382,7 +382,6 @@ function Menu() {
       title: "Biryani",
       items: [
         { name: "Chicken Biryani", price: "$100" },
-        { name: "Beef Biryani", price: "$110" },
         { name: "Goat Biryani", price: "$150" },
       ],
     },
@@ -391,7 +390,6 @@ function Menu() {
       title: "Korma",
       items: [
         { name: "Chicken Korma", price: "$100" },
-        { name: "Beef Korma", price: "$130" },
         { name: "Goat Korma", price: "$160" },
       ],
     },
@@ -401,7 +399,6 @@ function Menu() {
       items: [
         { name: "Chicken Manchurian", price: "$130" },
         { name: "Chicken Mughlai", price: "$120" },
-        { name: "Beef Stew (Indian Style)", price: "$140" },
         { name: "Beef Nihari", price: "$150" },
         { name: "Matar Pulao", price: "$50" },
       ],
