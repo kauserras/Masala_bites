@@ -452,18 +452,12 @@ function Menu() {
     },
     {
       emoji: "🍚",
-      title: "Rice",
+      title: "Rice & Bread",
       subtitle: "Full Tray",
       items: [
         { name: "Mattar Pulao", price: "$50" },
         { name: "Jeera Rice", price: "$50" },
         { name: "Plain Rice", price: "$40" },
-      ],
-    },
-    {
-      emoji: "🍞",
-      title: "Bread",
-      items: [
         { name: "Naan", price: "Price on request" },
       ],
     },
