@@ -404,7 +404,7 @@ function Menu() {
     },
     {
       emoji: "🐐",
-      title: "Mutton Dishes",
+      title: "Mutton Dishes & Kebabs",
       subtitle: "Full Tray",
       items: [
         { name: "Mutton Korma", price: "$170" },
@@ -414,6 +414,11 @@ function Menu() {
         { name: "Nihari", price: "$200" },
         { name: "Aloo Keema", price: "$170" },
         { name: "Mutton Haleem", price: "$180" },
+        { name: "Chapli Kebab", price: "Price on request" },
+        { name: "Shami Kebab", price: "Price on request" },
+        { name: "Seekh Kebab", price: "Price on request" },
+        { name: "Kakori Kebab", price: "Price on request" },
+        { name: "Pasanda Kebab", price: "Price on request" },
       ],
     },
     {
@@ -459,18 +464,6 @@ function Menu() {
         { name: "Jeera Rice", price: "$50" },
         { name: "Plain Rice", price: "$40" },
         { name: "Naan", price: "Price on request" },
-      ],
-    },
-    {
-      emoji: "🍖",
-      title: "Kebabs",
-      subtitle: "Full Tray",
-      items: [
-        { name: "Chapli Kebab", price: "Price on request" },
-        { name: "Shami Kebab", price: "Price on request" },
-        { name: "Seekh Kebab", price: "Price on request" },
-        { name: "Kakori Kebab", price: "Price on request" },
-        { name: "Pasanda Kebab", price: "Price on request" },
       ],
     },
     {
