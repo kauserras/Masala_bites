@@ -339,7 +339,7 @@ function Services() {
           </h2>
           <GoldDivider />
           <p className="text-base max-w-xl mx-auto mt-4" style={{ color: "rgba(180,155,115,0.8)" }}>
-            We prepare and deliver food for events of all sizes — so you can focus on your guests.
+            We prepare and deliver food for events of all sizes. Full-service options including buffet setup, food transport, cleanup, and equipment return are available at an additional charge.
           </p>
         </RevealSection>
 
@@ -642,9 +642,9 @@ function About() {
 
 function WhyUs() {
   const points = [
-    "We handle food preparation and delivery — so you can focus on your guests",
+    "Food preparation and delivery included — full-service options available at extra charge",
+    "Full-service add-ons: buffet setup, food transport, cleanup & equipment return",
     "Custom menus built around your event, guests, and preferences",
-    "Experienced team that works quietly in the background so you can enjoy the moment",
     "On-time, professional service for events of all sizes",
     "Serving Nashville and surrounding areas with local familiarity",
     "Direct communication — no middlemen, no surprises",
@@ -913,8 +913,8 @@ function FAQ() {
       a: "Yes. All of our meat and ingredients are 100% halal. You can order with confidence.",
     },
     {
-      q: "Do you provide staff and service at the event?",
-      a: "No. We deliver and set up the food, but on-site staffing is not included. Please reach out if you have questions about what's included in your package.",
+      q: "Do you offer full-service catering?",
+      a: "Yes! We offer full-service options at an additional charge, including delivery, buffet setup, food transport, cleanup, and equipment return. Contact us to discuss what you need for your event.",
     },
   ];
 
