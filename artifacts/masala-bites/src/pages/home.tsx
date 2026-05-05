@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Phone, MapPin, ChevronDown, ChevronUp, Star, Clock, Utensils, PartyPopper, Check, Menu as MenuIcon, X } from "lucide-react";
 
 import heroBg from "@assets/IMG_9839_1775522756253.jpeg";
@@ -78,6 +78,7 @@ function NavBar() {
     { label: "About", href: "#about" },
     { label: "Why Us", href: "#why" },
     { label: "Location", href: "#location" },
+    { label: "Reviews", href: "#reviews" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -875,6 +876,191 @@ function Location() {
   );
 }
 
+function Reviews() {
+  type Review = { id: number; name: string; rating: number; comment: string; createdAt: string };
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", rating: 5, comment: "" });
+  const [error, setError] = useState("");
+
+  const fetchReviews = useCallback(async () => {
+    try {
+      const res = await fetch("/api/reviews");
+      if (res.ok) setReviews(await res.json());
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchReviews(); }, [fetchReviews]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.comment.trim()) return;
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({ name: "", rating: 5, comment: "" });
+        fetchReviews();
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Could not connect. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const StarRating = ({ value, onChange }: { value: number; onChange?: (v: number) => void }) => (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button
+          key={n}
+          type="button"
+          onClick={() => onChange?.(n)}
+          className={onChange ? "cursor-pointer" : "cursor-default"}
+          style={{ background: "none", border: "none", padding: 0 }}
+        >
+          <Star
+            size={20}
+            fill={n <= value ? "#e8b84b" : "none"}
+            style={{ color: "#e8b84b" }}
+          />
+        </button>
+      ))}
+    </div>
+  );
+
+  return (
+    <section id="reviews" className="py-20 px-5" style={{ background: "hsl(30 12% 10%)" }}>
+      <div className="max-w-5xl mx-auto">
+        <RevealSection className="text-center mb-14">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
+            Customer Reviews
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4" style={{ color: "#f0e0b0" }}>
+            What Our Customers Say
+          </h2>
+          <GoldDivider />
+        </RevealSection>
+
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <h3 className="font-serif text-xl font-semibold mb-6" style={{ color: "#f0e0b0" }}>
+              Leave a Review
+            </h3>
+            {submitted ? (
+              <div className="rounded-xl p-6 text-center" style={{ background: "rgba(200,146,42,0.1)", border: "1px solid rgba(200,146,42,0.3)" }}>
+                <Check size={32} className="mx-auto mb-3" style={{ color: "#e8b84b" }} />
+                <p className="font-semibold mb-1" style={{ color: "#f0e0b0" }}>Thank you for your review!</p>
+                <p className="text-sm" style={{ color: "rgba(180,155,115,0.8)" }}>It means a lot to us.</p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="mt-4 text-sm underline"
+                  style={{ color: "#e8b84b" }}
+                >
+                  Write another review
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm mb-1.5" style={{ color: "rgba(220,195,155,0.8)" }}>Your Name</label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="e.g. Sarah M."
+                    required
+                    className="w-full px-4 py-2.5 rounded-lg text-sm outline-none"
+                    style={{
+                      background: "hsl(30 12% 14%)",
+                      border: "1px solid rgba(200,146,42,0.2)",
+                      color: "#f0e0b0",
+                    }}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-1.5" style={{ color: "rgba(220,195,155,0.8)" }}>Rating</label>
+                  <StarRating value={form.rating} onChange={(v) => setForm({ ...form, rating: v })} />
+                </div>
+                <div>
+                  <label className="block text-sm mb-1.5" style={{ color: "rgba(220,195,155,0.8)" }}>Your Review</label>
+                  <textarea
+                    value={form.comment}
+                    onChange={(e) => setForm({ ...form, comment: e.target.value })}
+                    placeholder="Tell us about your experience..."
+                    required
+                    rows={4}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm outline-none resize-none"
+                    style={{
+                      background: "hsl(30 12% 14%)",
+                      border: "1px solid rgba(200,146,42,0.2)",
+                      color: "#f0e0b0",
+                    }}
+                  />
+                </div>
+                {error && <p className="text-sm" style={{ color: "#e05555" }}>{error}</p>}
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="px-6 py-2.5 rounded text-sm font-bold transition-all hover:opacity-90 disabled:opacity-50"
+                  style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", color: "#1a0e06" }}
+                >
+                  {submitting ? "Submitting..." : "Submit Review"}
+                </button>
+              </form>
+            )}
+          </div>
+
+          <div>
+            <h3 className="font-serif text-xl font-semibold mb-6" style={{ color: "#f0e0b0" }}>
+              Recent Reviews
+            </h3>
+            {loading ? (
+              <p className="text-sm" style={{ color: "rgba(180,155,115,0.6)" }}>Loading reviews...</p>
+            ) : reviews.length === 0 ? (
+              <div className="rounded-xl p-6 text-center" style={{ background: "hsl(30 12% 13%)", border: "1px solid rgba(200,146,42,0.1)" }}>
+                <p className="text-sm" style={{ color: "rgba(180,155,115,0.7)" }}>No reviews yet — be the first!</p>
+              </div>
+            ) : (
+              <div className="space-y-4 max-h-[480px] overflow-y-auto pr-1">
+                {reviews.map((r) => (
+                  <div
+                    key={r.id}
+                    className="rounded-xl p-5"
+                    style={{ background: "hsl(30 12% 13%)", border: "1px solid rgba(200,146,42,0.12)" }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold text-sm" style={{ color: "#f0e0b0" }}>{r.name}</span>
+                      <div className="flex gap-0.5">
+                        {[1,2,3,4,5].map((n) => (
+                          <Star key={n} size={14} fill={n <= r.rating ? "#e8b84b" : "none"} style={{ color: "#e8b84b" }} />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(210,185,145,0.85)" }}>{r.comment}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
@@ -1107,6 +1293,7 @@ export default function Home() {
       <FoodShowcase />
       <Credibility />
       <Location />
+      <Reviews />
       <FAQ />
       <Contact />
       <Footer />
