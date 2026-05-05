@@ -6,6 +6,7 @@ import teamImg from "@assets/IMG_9957_1775522756253.jpeg";
 import meatImg from "@assets/IMG_9950_1775522756252.jpeg";
 import biryaniBig from "@assets/IMG_9847_1775522756253.jpeg";
 import curryImg from "@assets/IMG_9782_1775522756253.jpeg";
+import chicken65Img from "@assets/IMG_3658_1777945687144.jpeg";
 
 const PHONE = "6152937885";
 const PHONE_DISPLAY = "(615) 293-7885";
@@ -281,10 +282,11 @@ function PhotoStrip() {
     { src: meatImg, alt: "Masala meat dish prepared for catering" },
     { src: biryaniBig, alt: "Fragrant biryani rice close-up" },
     { src: curryImg, alt: "Chicken curry in catering trays" },
+    { src: chicken65Img, alt: "Chicken 65 in catering trays" },
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-0.5 overflow-hidden" style={{ height: "220px" }}>
+    <div className="grid grid-cols-4 gap-0.5 overflow-hidden" style={{ height: "220px" }}>
       {photos.map((p, i) => (
         <div
           key={i}
