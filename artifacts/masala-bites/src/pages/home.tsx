@@ -579,51 +579,33 @@ function About() {
   return (
     <section id="about" className="py-20 px-5" style={{ background: "hsl(30 14% 7%)" }}>
       <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <RevealSection>
-            <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
-              Our Story
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-5" style={{ color: "#f0e0b0" }}>
-              Authentic Flavors, <br />
-              <span style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Crafted with Care
-              </span>
-            </h2>
-            <GoldDivider />
-            <p className="text-base leading-relaxed mt-5 mb-4" style={{ color: "rgba(200,175,130,0.85)" }}>
-              Masala Bites is a Nashville-based catering service that brings the depth and warmth of South Asian cuisine to your most important events. Based at 2195 Nolensville Pike, we're rooted in the local community and proud to serve it.
-            </p>
-            <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(200,175,130,0.85)" }}>
-              Our kitchen operates with one goal: to turn your event into a genuinely memorable experience — from the first bite to the last. Whether you're hosting 20 guests or 200, we bring the same quality, attention, and passion to every table.
-            </p>
-            <a
-              href={`tel:${PHONE}`}
-              data-testid="about-call-link"
-              className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
-              style={{ color: "#e8b84b" }}
-            >
-              <Phone size={16} />
-              {PHONE_DISPLAY}
-            </a>
-          </RevealSection>
-
-          <RevealSection delay={150}>
-            {/* Real team photo */}
-            <div
-              className="rounded-xl overflow-hidden"
-              style={{ border: "1.5px solid rgba(200,146,42,0.22)", boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}
-            >
-              <img
-                src={teamImg}
-                alt="Masala Bites team preparing catering"
-                className="w-full h-full object-cover"
-                style={{ height: "380px", objectPosition: "center" }}
-                data-testid="about-team-photo"
-              />
-            </div>
-          </RevealSection>
-        </div>
+        <RevealSection className="max-w-2xl mx-auto text-center">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#e8b84b" }}>
+            Our Story
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-5" style={{ color: "#f0e0b0" }}>
+            Authentic Flavors, <br />
+            <span style={{ background: "linear-gradient(135deg,#c8922a,#e8b84b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Crafted with Care
+            </span>
+          </h2>
+          <GoldDivider />
+          <p className="text-base leading-relaxed mt-5 mb-4" style={{ color: "rgba(200,175,130,0.85)" }}>
+            Masala Bites is a Nashville-based catering service that brings the depth and warmth of South Asian cuisine to your most important events. Based at 2195 Nolensville Pike, we're rooted in the local community and proud to serve it.
+          </p>
+          <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(200,175,130,0.85)" }}>
+            Our kitchen operates with one goal: to turn your event into a genuinely memorable experience — from the first bite to the last. Whether you're hosting 20 guests or 200, we bring the same quality, attention, and passion to every table.
+          </p>
+          <a
+            href={`tel:${PHONE}`}
+            data-testid="about-call-link"
+            className="inline-flex items-center justify-center gap-2 text-sm font-semibold transition-colors duration-200"
+            style={{ color: "#e8b84b" }}
+          >
+            <Phone size={16} />
+            {PHONE_DISPLAY}
+          </a>
+        </RevealSection>
       </div>
     </section>
   );
