@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Phone, MapPin, ChevronDown, ChevronUp, Star, Clock, Utensils, PartyPopper, Check, Menu as MenuIcon, X } from "lucide-react";
 
-import heroBg from "@assets/IMG_9839_1775522756253.jpeg";
-import teamImg from "@assets/IMG_9957_1775522756253.jpeg";
+import heroBg from "@assets/IMG_9950_1775522756252.jpeg";
 import meatImg from "@assets/IMG_9950_1775522756252.jpeg";
 import biryaniBig from "@assets/IMG_9847_1775522756253.jpeg";
 import curryImg from "@assets/IMG_9782_1775522756253.jpeg";
